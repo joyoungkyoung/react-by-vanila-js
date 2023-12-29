@@ -21,7 +21,7 @@ export default function App() {
   }, [counter]);
 
   return h("div", { className: "app-container" }, [
-    `test1 -> ${counter}, ${a}`,
+    `test1 -> ${counter}`,
     h("div", { onClick: handleClickTest1 }, ["test2"]),
     h("button", { onClick: handleClickTest2 }, "클릭"),
     createComponent(Test, { a: "asd" }),
