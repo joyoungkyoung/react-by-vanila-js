@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "./core/library.js";
+import { useEffect, useState } from "./core/library.js";
 import { h } from "./core/dom.js";
 import Test from "./pages/test/index.js";
-import createComponent from "./utils/component.js";
+import "./types/dom.js";
 
 export default function App() {
   const [counter, setCounter] = useState(0);
@@ -20,10 +20,14 @@ export default function App() {
     console.log("counter: ", counter);
   }, [counter]);
 
-  return h("div", { className: "app-container" }, [
-    `test1 -> ${counter}`,
-    h("div", { onClick: handleClickTest1 }, ["test2"]),
-    h("button", { onClick: handleClickTest2 }, "클릭"),
-    createComponent(Test, { a: "asd" }),
-  ]);
+  return h(
+    "div",
+    { className: "app-container", onclick: () => alert("123123123123") },
+    [
+      `test1 -> ${counter}`,
+      h("div", { onclick: handleClickTest1 }, ["test2"]),
+      h("button", { onclick: handleClickTest2 }, "클릭"),
+      Test({ a: "1123" }),
+    ]
+  );
 }

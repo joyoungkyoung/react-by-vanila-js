@@ -8,6 +8,10 @@ const Library = () => {
   let states = [];
   let idx = 0;
 
+  /**
+   * @param {HookCallback} callback
+   * @param {any[]} dependencies
+   */
   const useEffect = (callback, dependencies) => {
     const _idx = idx;
     const prev = states[_idx];
@@ -25,6 +29,10 @@ const Library = () => {
     idx++;
   };
 
+  /**
+   * @param {HookCallback} callback
+   * @param {any[]} dependencies
+   */
   const useMemo = (callback, dependencies) => {
     const _idx = idx;
     const [prevState, prevMemo] = [states[_idx]];
@@ -45,6 +53,10 @@ const Library = () => {
     return memo;
   };
 
+  /**
+   * @param {any} initState
+   * @returns {[any, (newState: any) => void]}
+   */
   const useState = (initState) => {
     const _idx = idx;
     const state = states[idx] || initState;
@@ -74,6 +86,10 @@ const Library = () => {
     }
   });
 
+  /**
+   * @param {Component} component
+   * @param {HTMLElement | null} root
+   */
   const render = (component, root) => {
     $root = root;
     $rootComponent = component;
